@@ -1,23 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Web Page</title>
-    <link rel="stylesheet" href="/styles/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Web Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      transition: background-color 0.5s ease;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCRd9gm72QsYJ0Ai_TfvCrWincJHzLC16I",
+          authDomain: "test-project-a226b.firebaseapp.com",
+          projectId: "test-project-a226b",
+          storageBucket: "test-project-a226b.firebasestorage.app",
+          messagingSenderId: "809030553729",
+          appId: "1:809030553729:web:299dc2c41ce8fe8a30bd80",
+          measurementId: "G-DKK3N8J1QX"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+  <h1>Hello, World!</h1>
+  <p>Click the button to change background color.</p>
+  <button onclick="changeBackground()">Change Color</button>
 
-    <header>
-        <h1>Welcome to My Web Page</h1>
-    </header>
-
-    <main>
-        <p>This is a simple webpage with HTML, CSS, and JavaScript.</p>
-        <button id="clickBtn">Click Me</button>
-        <p id="message"></p>
-    </main>
-
-    <script src="script.js"></script>
+  <script>
+    function changeBackground() {
+      const colors = ["#f44336", "#2196F3", "#FFEB3B", "#4CAF50", "#9C27B0"];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.body.style.backgroundColor = randomColor;
+    }
+  </script>
 </body>
 </html>
